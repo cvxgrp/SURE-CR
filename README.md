@@ -205,5 +205,9 @@ If you use this code in a research project, please cite the associated paper.
 @article{nobel2022tractable,
     title={Tractable evalutaion of {S}tein's {U}nbiased {R}isk {E}stimate with convex regularizers},
     author={Parth Nobel \and Emmanuel Cand\`es \and Stephen Boyd},
+    publisher = {arXiv},
+    year = {2022},
+    note = {arXiv:2211.05947 [math.ST]},
+    url = {https://arxiv.org/abs/2211.05947},
 }
 ```
