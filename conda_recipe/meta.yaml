@@ -20,7 +20,6 @@ requirements:
     - scipy
     - pytorch
     - cvxpy
-    - cvxpylayers
     - torch-linops
 
   run:
@@ -30,7 +29,6 @@ requirements:
     - scipy
     - pytorch
     - cvxpy
-    - cvxpylayers
     - torch-linops
 
 about:
