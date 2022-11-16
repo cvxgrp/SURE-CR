@@ -1,5 +1,4 @@
 import torch
-from cvxpylayers.torch import CvxpyLayer
 import surecr.admm.admm as admm
 import surecr.prox_grad.prox_grad as prox_grad
 
@@ -24,18 +23,23 @@ class Solver:
         return NotImplementedError()
 
 class CVXPYSolver(Solver):
-    """
-    problem must be a CVXPY problem with a single paremeter, y_parameter,
-        and variables y_variable.
-
-    estimate must be function which takes tensors with values for each variable
-        and returns the estimate.
-
-    WARNING: This solver has poor performance on large problems, and can
-    have undetected poor accuracy on some moderately-sized problems.
-    """
-
     def __init__(self, problem, y_parameter, variables, estimate):
+        """
+        problem must be a CVXPY problem with a single paremeter, y_parameter,
+            and variables y_variable.
+    
+        estimate must be function which takes tensors with values for each variable
+            and returns the estimate.
+
+        WARNING: This solver has poor performance on large problems, and can
+        have undetected poor accuracy on some moderately-sized problems.
+        """
+        try:
+            from cvxpylayers.torch import CvxpyLayer
+        except ImportError:
+            raise RuntimeError("Could not import cvxpylayers. Please ensure it is"
+                               " correctly installed. Note: cvxpylayers is not"
+                               "automatically installed when using conda.")
         self._problem = problem
         self._y_parameter = y_parameter
         self._variables = variables
