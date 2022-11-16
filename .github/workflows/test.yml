@@ -16,6 +16,7 @@ jobs:
 
           - name: Install Dependencies
             run: |
+              git fetch --prune --unshallow --tags
               sudo $pythonLocation/bin/python3 -m pip install -r requirements.txt
               sudo $pythonLocation/bin/python3 -m pip install setuptools --upgrade
               sudo $pythonLocation/bin/python3 -m pip install pytest
