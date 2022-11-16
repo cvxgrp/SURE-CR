@@ -1,4 +1,4 @@
-{% set name = "torch-linops" %}
+{% set name = "SURE-CR" %}
 
 package:
   name: "{{ name|lower }}"
