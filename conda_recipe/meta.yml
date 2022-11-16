@@ -1,0 +1,48 @@
+{% set name = "torch-linops" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: {{ environ.get('VERSION_FROM_GIT_TAG') }}
+
+source:
+  git_url: https://github.com/cvxgrp/SURE-CR
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python >=3.6
+    - numpy >=1.17.5
+    - scipy
+    - pytorch
+    - cvxpy
+    - cvxpylayers
+    - torch-linops
+
+  run:
+    - pip
+    - python >=3.6
+    - numpy >=1.17.5
+    - scipy
+    - pytorch
+    - cvxpy
+    - cvxpylayers
+    - torch-linops
+
+about:
+  home: https://github.com/cvxgrp/SURE-CR
+  license: APACHEv2
+  license_family: Apache
+  license_file:
+  summary: This package enables tractable evaluation of Stein's Unbiased Risk Estimate on convexly regularized estimators.
+  doc_url:
+  dev_url:
+
+extra:
+  recipe-maintainers:
+    - PTNobel
+    - Thistleman
