@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import subprocess
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
    long_description = fh.read()
@@ -22,6 +22,7 @@ setup(
     name="surecr",
     version=VERSION_FROM_GIT_TAG,  # Required
     setup_requires=["setuptools>=18.0"],
+    packages=find_packages(exclude=["notebooks"]),  # Required
     install_requires=[
         "numpy >= 1.17.5",
         "scipy",
