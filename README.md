@@ -33,7 +33,7 @@ $ pip install surecr
 To install with conda:
 
 ```bash
-$ conda install -t conda-forge surecr
+$ conda install -c stanfordcvxgrp -c conda-forge sure-cr
 ```
 
 ## Examples
