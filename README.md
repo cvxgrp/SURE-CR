@@ -20,6 +20,22 @@ $$
 $SURE(\hat\mu, y)$ is a good estimate of the $\ell_2$ risk of $\hat\mu$, especially
 for high dimensional problems.
 
+## Installation
+
+SURE-CR can be installed with pip and conda. By default, the conda instillation does not support using the `CVXPYSolver`, and the `cvxpylayers` library will have to be installed seperately to use it.
+
+To install with pip:
+
+```bash
+$ pip install surecr
+```
+
+To install with conda:
+
+```bash
+$ conda install -c stanfordcvxgrp -c conda-forge sure-cr
+```
+
 ## Examples
 
 The easiest way to start using SURE-CR may be to read the examples:
