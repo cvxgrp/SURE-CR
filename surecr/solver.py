@@ -1,6 +1,6 @@
 import torch
-import surecr.admm.admm as admm
-import surecr.prox_grad.prox_grad as prox_grad
+import surecr.admm as admm
+import surecr.prox_grad as prox_grad
 
 class Solver:
     """
