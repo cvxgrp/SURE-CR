@@ -20,11 +20,11 @@ def divergence(solution, input_vec, strategy, parameters) -> torch.Tensor:
     J = lo.VectorJacobianOperator(solution, input_vec)
     
     if strategy == 'exact':
-        return lot.exact_trace(J, **parameters)
+        return lot.exact_trace(J, **parameters)[0]
     elif strategy == 'hutchinson':
-        return lot.hutchinson(J, **parameters)
+        return lot.hutchinson(J, **parameters)[0]
     elif strategy == 'hutch++':
-        return lot.hutchpp(J, **parameters)
+        return lot.hutchpp(J, **parameters)[0]
     elif strategy == 'xtrace':
         return lot.xtrace(J, **parameters)[0]
     elif strategy == 'default' or strategy == 'xnystrace':
