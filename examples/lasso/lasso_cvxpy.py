@@ -36,7 +36,11 @@ def run_experiment():
     t0 = time.monotonic()
 
     sure = surecr.SURE(variance, solver)
-    sure_val = sure.compute(y)
+    sure_val = sure.compute(y,
+                            # Generates random vectors for trace estimation
+                            # on the GPU so that the CVXPYlayers and FISTA
+                            # results are run with the same random vectors
+                            {'_gen_data_on_device': torch.device('cuda')})
     tf = time.monotonic()
     print(f"SURE: {sure_val} time: {tf - t0}")
 

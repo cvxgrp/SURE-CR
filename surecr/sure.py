@@ -12,7 +12,7 @@ class SURE:
         self._variance = variance
         self._solver = solver
         self._divergence_strategy: \
-                Literal['default', 'exact', 'hutchinson', 'hutch++'] = 'default'
+                Literal['default', 'exact', 'xtrace', 'hutchinson', 'hutch++'] = 'default'
         self._solution = None
 
     @property
@@ -65,19 +65,10 @@ class SURE:
         self._norm_squared_term = norm_squared_term
 
         self._t_i_div = time.monotonic()
-        if  self._divergence_strategy == 'exact':
-            divergence = div_lib.exact_divergence(mu_hat_evaled, shape_ereased_data,
-                    **divergence_parameters)
-        elif self._divergence_strategy == 'hutchinson':
-            divergence = div_lib.hutchinson(mu_hat_evaled, shape_ereased_data,
-                     **divergence_parameters)
-
-        elif self._divergence_strategy == 'default' \
-                or self._divergence_strategy == 'hutch++':
-            divergence = div_lib.hutch_pp(mu_hat_evaled, shape_ereased_data,
-                     **divergence_parameters)
-        else:
-            raise RuntimeError("Unknown divergence strategy.")
+        divergence = div_lib.divergence(mu_hat_evaled,
+                                        shape_ereased_data,
+                                        self._divergence_strategy,
+                                        divergence_parameters)
         self._t_f_div = time.monotonic()
         self._divergence = divergence
 
